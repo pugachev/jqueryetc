@@ -13,23 +13,20 @@
   </style>
 </head>
 <body>
-
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="js/main.js"></script>
   <script>
-
-    var woochan = {
-      show:function(){
-        console.log(this.name);
-      }
+    var showTagName = function(event){
+      alert(event.target.tagName);
+      alert(event.currentTarget.tagName);
     }
-
-    woochan.name = "うーちゃん";//後から追加されたが、woochanのオブジェクトのメンバ変数となる
-    woochan.show();
+    document.body.addEventListener('click',showTagName,false);
 
     $(function() {
       
     });
-</script>
+  </script>
+  <div>DIV</div>
+  <p>P</p>
 </body>
 </html>

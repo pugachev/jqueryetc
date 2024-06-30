@@ -13,23 +13,34 @@
   </style>
 </head>
 <body>
-
+  <div id="outer">
+    <div id="inner">
+      HERE
+    </div>
+  </div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="js/main.js"></script>
   <script>
-
-    var woochan = {
-      show:function(){
-        console.log(this.name);
-      }
+    
+    var showMessageOuter = function(){
+      alert('outer');
     }
 
-    woochan.name = "うーちゃん";//後から追加されたが、woochanのオブジェクトのメンバ変数となる
-    woochan.show();
+    var showMessageInner = function(){
+      alert('inner');
+    }
+
+    $('#outer').click(function(){
+      showMessageOuter();
+    });
+
+    $('#inner').click(function(){
+      showMessageInner();
+    });
 
     $(function() {
       
     });
-</script>
+  </script>
 </body>
 </html>

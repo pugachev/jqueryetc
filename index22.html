@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQueryの練習</title>
+  <style>
+    .red-text {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <a href="http://itpro.nikkeibp.co.jp/NSW/" id="normal">normal</a><br />
+  <a href="http://itpro.nikkeibp.co.jp/NSW/" id="preventDefault">preventDefault</a><br />
+  <a href="http://itpro.nikkeibp.co.jp/NSW/" id="stopPropagation">stopPropagation</a><br />
+  <a href="http://itpro.nikkeibp.co.jp/NSW/" id="stopImmediatePropagation">stopImmediatePropagation</a><br />
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
+  <script>
+    var alertOnBody = function(){
+      alert('BODY!');//Bodyへイベントを埋め込む
+    }
+
+    document.body.addEventListener('click',alertOnBody,false);
+    document.getElementById('preventDefault').addEventListener('click',function(event){
+      event.preventDefault();//normalノード(◯)→body(◯)→リンク飛ばない(デフォルト動作はｘ)
+    },false);
+    document.getElementById('stopPropagation').addEventListener('click',function(event){
+      event.stopPropagation();//stopPropagation→body(x)→リンク飛ぶ
+    },false);
+    document.getElementById('stopImmediatePropagation').addEventListener('click',function(event){
+      event.stopImmediatePropagation();//stopImmediatePropagation(x)→body(x)→リンク飛ぶ
+    },false);
+
+    var alertTargetId = function(event){
+      alert(event.target.id);
+    }
+
+    document.getElementById('normal').addEventListener('click',alertTargetId,false);
+    document.getElementById('preventDefault').addEventListener('click',alertTargetId,false);
+    document.getElementById('stopPropagation').addEventListener('click',alertTargetId,false);
+    document.getElementById('stopImmediatePropagation').addEventListener('click',alertTargetId,false);
+
+    $(function() {
+      
+    });
+  </script>
+</body>
+</html>

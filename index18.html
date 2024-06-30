@@ -18,14 +18,32 @@
   <script src="js/main.js"></script>
   <script>
 
+    // var printThis = function(){
+    //   console.log(this);
+    // }
+
+    // var woochan = {
+    //   show:function(){
+    //     console.log(this);
+    //   }
+    // }
+
+    // woochan.show();
+    // new woochan.show();
+
     var woochan = {
-      show:function(){
+      name:'Woochan!'
+    }
+
+    var usagi = {
+      name:'USAGI',
+      show: function(){
         console.log(this.name);
       }
     }
 
-    woochan.name = "うーちゃん";//後から追加されたが、woochanのオブジェクトのメンバ変数となる
-    woochan.show();
+    usagi.show();
+    usagi.show.apply(woochan);
 
     $(function() {
       

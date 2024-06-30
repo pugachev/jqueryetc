@@ -18,14 +18,12 @@
   <script src="js/main.js"></script>
   <script>
 
-    var woochan = {
-      show:function(){
-        console.log(this.name);
-      }
-    }
+    var usagi = {name:'うーちゃん'};
+    var girl  = {gender:'女の子'};
 
-    woochan.name = "うーちゃん";//後から追加されたが、woochanのオブジェクトのメンバ変数となる
-    woochan.show();
+    console.log(usagi.gender);
+    usagi.__proto__=girl;//プロトタイプ型を認めない環境もあるそうな。。。
+    console.log(usagi.gender);
 
     $(function() {
       
