@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQueryの練習</title>
+  <style>
+    .red-text {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
+  <script>
+
+    // これはNG let plus前にplus変数にアクセスしているから
+    // plus = function(m){
+    //       return m*2;
+    // }
+
+    // これはOK 値をいれるのと同じ理屈で宣言後はアクセスしてもよい
+    // let plus = function(n){
+    //   return n + 1;
+    // }
+    // console.log(plus(10));
+
+    // function plus1(n){
+    //   return n+1;
+    // }
+
+    // let hoge = plus1;// 変数に変数として代入が可能である
+    // console.log(hoge(15));
+
+
+    var hoge = function plus1(n){
+      return n+1;
+    }
+
+    console.log(hoge(19));
+    console.log(plus1(19));//変数名と関数名が異なるのでnot definedとなる
+
+    $(function() {
+      
+    });
+</script>
+</body>
+</html>

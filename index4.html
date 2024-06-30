@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQueryの練習</title>
+  <style>
+    .div1 {
+      color: inherit; /* 親要素の文字色を継承 */
+      font-weight: inherit; /* 親要素のフォントウェイトを継承 */
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h2>ダミータイトル</h2><!-- divタグ最初の子要素 -->
+    <p>ダミー1</p>
+    <p>ダミー2</p>
+    <div>
+      <ul>
+        <li>damy-list3</li>
+        <li>damy-list4</li>
+        <li>damy-list5</li>
+      </ul>
+    </div>
+    <p>ダミー6</p>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
+  <script>
+    $(function() {
+      // $('div > p:first-child').css("color", "red"); 
+      // 数値を入力
+      // damy-list4を青色に着色する
+      $('div > div > ul li:nth-child(2)').css("color", "blue"); 
+      // 偶数を指定
+      // $('p:nth-child(even)').css("color", "red"); 
+      // 奇数を指定
+      // $('p:nth-child(odd)').css("color", "red"); 
+
+      // $('p:nth-child(even)').css("color", "red"); が ダミー6 を着色しない理由は、
+      // nth-child セレクターがその要素の親の全ての子要素を対象として計算されるためです。
+      // p 要素だけを対象にするわけではありません。
+
+      // h2 ダミータイトル: divの最初の子要素です。
+      // p ダミー1: divの2番目の子要素です。
+      // p ダミー2: divの3番目の子要素です。
+      // div (ulを含む): divの4番目の子要素です。このdivの中にはリストアイテム(li)がありますが、これらは親divの子要素とは見なされません。
+      // p ダミー6: divの5番目の子要素です。
+      // $('p:last-child').css("color", "red"); 
+    });
+</script>
+</body>
+</html>

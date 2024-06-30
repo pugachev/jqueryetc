@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQueryの練習</title>
+  <style>
+    .div1 {
+      color: inherit; /* 親要素の文字色を継承 */
+      font-weight: inherit; /* 親要素のフォントウェイトを継承 */
+    }
+  </style>
+</head>
+<body>
+    <p class="text1">ダミー1</p>
+    <p class="text2">ダミー2</p>
+    <div class="div1">
+        <p>ダミー3</p>
+        <p class="text4">ダミー4</p>
+    </div>
+    <p class="text5">ダミー5</p>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
+  <script>
+    $(function() {
+      // クラス指定
+      // $('p[class="text4"]').css({
+      //   "color":"blue",
+      //   "font-weight":"bold",
+      // });
+      // クラス指定 否定形
+      // $('p[class!="text4"]').css({
+      //   "color":"blue",
+      //   "font-weight":"bold",
+      // });
+      // クラス指定 前方一致
+      //ダミー3が青色・太字になる理由は、CSSの 継承 の仕組みにあります。
+      // $('p[class^="text"]') によって、class="text1" と class="text2" が持つ p タグの文字色が青、太字に設定されます。
+      // class="text1" の p タグは、class="div1" の div タグに含まれています。
+      // CSSの継承により、class="div1" 内の要素（ダミー3を含む）も、親要素のスタイル（青色・太字）を継承します。
+      // このパターンだと継承は関係なかった
+      // $('p[class^="text"]').css({
+      //   "color":"blue",
+      //   "font-weight":"bold",
+      // });
+      // $('p[class$="1"]').css({
+      //   "color":"blue",
+      //   "font-weight":"bold",
+      // });
+      $('p[class*="ext"]').css({
+        "color":"green",
+        "font-weight":"bold",
+      });
+    });
+</script>
+</body>
+</html>

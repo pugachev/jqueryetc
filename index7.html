@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQueryの練習</title>
+  <style>
+    .red-text {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // function setting(){
+    //   // var name = "woochan";//←表示されない
+    //   name = "woochan";//←表示される
+    // }
+
+    // setting();
+    // console.log(name);
+
+    // 本来nameは絶対に表示されないのだが、何故が表示されてしまっている
+    // ChatGPTもGeminiも表示されないと言っている 謎
+    // Edgeだと表示されなかったので良しとしよう
+    function setting(){
+      let name = "woochan";
+    }
+
+    setting();
+    console.log(name);
+    console.log('aaa');
+
+    $(function() {
+      
+    });
+</script>
+</body>
+</html>

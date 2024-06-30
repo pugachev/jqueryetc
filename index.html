@@ -7,6 +7,83 @@
   <title>jQueryの練習</title>
 </head>
 <body>
-  
+    <p class="text">ダミー1</p>
+    <p class="text">ダミー2</p>
+    <div>
+        <p class="text">ダミー3</p>
+        <p class="text">ダミー4</p>
+        <div>
+          <h3>h3ダミー1</h3>
+          <h4>h4ダミー2</h4>
+          <p class="text">ダミー5</p>
+        </div>
+        <div>
+          <h3>h3ダミー3</h3>
+          <h4>h4ダミー4</h4>
+          <p class="text">ダミー6</p>
+        </div>
+    </div>
+    <p class="text">ダミー7</p>
+    <div>
+      <h3>h3ダミー5</h3>
+      <h4>h4ダミー6</h4>
+      <p class="text">ダミー8</p>
+    </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
+  <script>
+    $(function() {
+        // 1.複数要素を指定してみる pタグのみ p,pとpは結局は全部のpタグって意味
+        // $("p").css("color", "red");
+
+        // 2.複数要素を指定してみる pタグとh4タグのみ
+        // $("p,h4").css("color", "red");
+
+        // 3.漏れなく全要素を指定
+        // $("*").css("color", "red");
+
+        // 4.範囲を指定して直下の要素を漏れなく全要素を指定
+        // $("div > *").css("color", "red");
+
+        // 5.範囲を指定して直下の要素でマッチングするものを指定
+        // $("div > h4").css("color", "red");
+
+        // 6.階層を2段にして要素を指定
+        // $("div > div > div > h4").css("color", "green");
+
+        // 7.階層を2段にしてその配下のhタグ要素全てを指定
+        // シンプルに複数要素を指定する方法「,」で区切れば良いみたい アスタリスクは必要ないっぽい←重要 大間違い！
+        // このやり方だとダミー8も着色される 「div > div > h3」と「h4」に２つという意味
+        // $("div > div").find("h3, h4").css("color", "blue");←なるほど1
+        // $("h3, h4").filter(function() {
+        //     return $(this).parent().parent().is("div > div");←親まで遡ってからh3,h4を探す
+        // }).css("color", "blue");←なるほど2
+
+        // $("div > div > h3,h4").css("color", "blue");
+
+        // 8.子孫セレクタ div(1階層) div(2階層) マッチングがないと全ての要素
+        $("div div p[class='text']").css("color","red");
+
+        // 9.子孫セレクタ div(1階層) div(2階層) マッチングする要素
+        // $("div div h3 h4").css("color", "blue");←これだとdivの下のdivの下のh3の下のh4を探す
+
+        // $("div > div > h3,h4").css("color", "red");でダミー8が着色される理由
+        // div > div > h3,h4 は実際には2つのセレクタを意味します：←ここが盲点でした！
+        // div > div > h3
+        // h4
+        // 最初のセレクタ div > div > h3 は、親が div であり、その div のさらに親が div である h3 要素を選択します。
+        // 2つ目のセレクタ h4 は、すべての h4 要素を選択します。これはどこにあっても関係ありません。
+        // 全てのdiv > div > h3およびh4要素に適用されているため、ダミー8が赤く着色されています
+        // $("div > div > div > h3, div > div > div > h4").css("color", "red");
+        // $("div > div").find("h3, h4").css("color", "blue");←これも正解
+
+
+
+        
+        
+
+
+    });
+</script>
 </body>
 </html>

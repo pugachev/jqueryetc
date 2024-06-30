@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQueryの練習</title>
+  <style>
+    .red-text {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
+  <script>
+      // let globalLet = "I'm a global let variable";
+
+      // function testFunction() {
+      //     console.log(globalLet); // "I'm a global let variable"
+      //     globalLet = "I'm a local let variable";
+      //     console.log(globalLet); // "I'm a local let variable"
+      // }
+
+      // testFunction();
+
+      // console.log(globalLet); // ReferenceError: localLet is not defined
+
+
+      // let globalLet = "I'm a global let variable";
+
+      // function testFunction() {
+      //     console.log(globalLet); // "I'm a global let variable"
+      //     let localLet = "I'm a local let variable";
+      //     console.log(localLet); // "I'm a local let variable"
+      // }
+
+      // testFunction();
+
+      // console.log(localLet); // ReferenceError: localLet is not defined
+
+      // let global_animal = "usagi";
+      // function show(){
+      //   console.log(global_animal);
+      //   let local_animal = "cat";
+      //   console.log(local_animal);
+      // }
+
+      // show();
+
+      // console.log(local_animal);
+      
+      // 重要1 これがダメな理由は、letで宣言した変数をもう一度letで宣言しているから
+      // let animal = "usagi";
+      // function show(){
+      //   console.log(animal);
+      //   let animal = "cat";
+      //   console.log(animal);
+      // }
+
+      // show();
+
+      // 重要2 これはOK animalをletで再宣言してないから
+      // let animal = "usagi";
+      // function show(){
+      //   console.log(animal);
+      //   animal = "cat";
+      //   console.log(animal);
+      // }
+
+      // show();
+
+      // 重要3 関数中にvar宣言しているとこの関数内部でしかanimal変数は有効にならない
+      // なのでusagiが入ったanimal変数は存在しないことになる
+      // ただしvarの曖昧さゆえにcatは表示される
+      // animal = "usagi";
+      // function show(){
+      //   console.log(animal);
+      //   var animal = "cat";
+      //   console.log(animal);
+      // }
+
+      // show();
+
+      // 重要4 関数中でlet宣言するまえに同名の変数に値が格納されているので
+      // エラーとなる
+      // 変数が宣言される前にアクセスしようとするとエラーが発生する仕組み
+      // animal = "usagi";←アクセスしている NG
+      function show(){
+        // console.log(animal);←アクセスしている NG
+        let animal = "cat";
+        console.log(animal);
+        animal = "dog";
+        console.log(animal);//←OKパターンletで宣言した後にアクセスしても問題なし
+      }
+
+      show();
+
+    $(function() {
+      
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQueryの練習</title>
+</head>
+<body>
+    <p class="text">ダミー1</p>
+    <p class="text">ダミー2</p>
+    <div>
+        <p class="text">ダミー3</p>
+        <p class="text">ダミー4</p>
+    </div>
+    <p class="text">ダミー5</p>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
+  <script>
+    $(function() {
+        // $("p + .text").css("color", "red");
+        // <p class="text">ダミー1</p>: 自分より前にpタグがないので、自分は隣接する要素にならない
+        // <p class="text">ダミー2</p>: ダミー1からみてダミー2は隣接するtextクラスを持つのであてはまる
+        // <p class="text">ダミー3</p>: 自分の直上がdivタグなのでpタグに隣接するが当てはまらない
+        // <p class="text">ダミー4</p>: ダミー3からみてダミー2は隣接するtextクラスを持つのであてはまる
+        // <p class="text">ダミー5</p>: 自分の直上がdivタグなのでpタグに隣接するが当てはまらない
+
+        $('p ~ .text').css("color", "red");
+        // ダミー5が着色される理由は「~」が同階層をみるから。div要素を無視するとダミー5は始まりのダミー1と
+        // 同じ階層なので着色される
+
+    });
+</script>
+</body>
+</html>
