@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQueryの練習</title>
+  <style>
+    .red-text {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li class="target">Taro</li>
+    <li id="second">Jiro</li>
+    <li class="target">Saburo</li>
+  </ul>
+  <button>OK</button>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+
+
+    $(function() {
+      document.querySelector('button').addEventListener('click', () => {
+        const liElement = document.createElement('li');
+        liElement.textContent = 'Hanako';
+        // document.querySelector('ul').appendChild(liElement);
+        document.querySelector('ul').append(liElement);
+        // document.querySelector('ul').insertBefore(
+        //   liElement, 
+        //   document.querySelector('#second')
+        // );
+        // if (confirm('Sure?') === true) {
+        //   document.querySelector('#second').remove();
+        // }
+      });
+    });
+  </script>
+</body>
+</html>

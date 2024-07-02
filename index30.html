@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My JavaScript</title>
+</head>
+<body>
+  <input type="text">
+  <p></p>
+  
+  <script>
+    // マウスカーソルが入ってフォーカスが入った時
+    document.querySelector('input').addEventListener('focus', () => {
+        document.querySelector('p').textContent = 'English only!';
+    });
+
+    // タブKeyでフォーカスが外れた時
+    document.querySelector('input').addEventListener('blur', () => {
+        document.querySelector('p').textContent = '';
+    });
+
+    // 画面を読み込んだ後に最初からテキストボックスにフォーカスを当てる処理
+    // document.querySelector('input').focus();
+  </script>
+</body>
+</html>

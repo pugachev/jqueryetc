@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My JavaScript</title>
+</head>
+<body>
+  <form>
+    <input type="text">
+    <button>OK</button>
+  </form>
+  <p></p>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+  // document.querySelector('form').addEventListener('submit', (e) => {
+  //   // formは別のページに飛ぶ仕様があるので、その規定の処理を防いでいる
+  //   e.preventDefault();
+  //   document.querySelector('p').textContent = document.querySelector('input').value;
+  // });
+
+  //jQueryで試してみる
+  $("form").click(function(e){
+    e.preventDefault();
+    // inputやselectやtextareaはフォーム要素 val()で文字列を挿入する
+    // pやdivは非フォーム要素 text()やhtml()で文字列を挿入する
+    $("p").text($("input").val());
+  });
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ラジオボタンの値を取得</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <input type="checkbox" value="red"> Red
+    <input type="checkbox" value="green"> Green
+    <input type="checkbox" value="blue"> Blue
+    <button>OK</button>
+  
+
+<script>
+  document.querySelector('button').addEventListener('click', () => {
+    const colors = [];
+    document.querySelectorAll('input').forEach((checkbox) => {
+      if (checkbox.checked === true) {
+        colors.push(checkbox.value);
+      }
+    });
+    alert(colors.join(','));
+  });
+</script>
+
+</body>
+</html>

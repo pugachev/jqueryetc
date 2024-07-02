@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My JavaScript</title>
+</head>
+<body>
+  <p style="color: red;">Hello</p>
+  <button>OK</button>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    // document.querySelector('button').addEventListener('click', () => {
+    //     // document.querySelector('p').style = 'font-size: 24px';
+    //     document.querySelector('p').style.fontSize = '24px';
+    // });
+
+    $('button').click(function(e){
+        // pタグにcssを追加
+        $('p').css('font-size','24px');
+    });
+  </script>
+</body>
+</html>
