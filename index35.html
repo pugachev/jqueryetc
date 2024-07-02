@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>Dev Mode is On.</p>
+  <button>Switch</button>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+
+    // true false
+    // let mode = 'dev';
+    // let mode = 'normal';
+    // let isDevMode = true;
+    // let isDevMode = false;
+
+    let isDevMode = true;
+    const pElement = document.querySelector('p');
+    const buttonElement = document.querySelector('button');
+    
+    buttonElement.addEventListener('click', () => {
+        if (isDevMode === true) {
+        pElement.textContent = 'Dev Mode is Off.';
+        // isDevMode = false;
+        } else {
+        pElement.textContent = 'Dev Mode is On.';
+        // isDevMode = true;
+        }
+        isDevMode = !isDevMode;
+    });
+  </script>
+</body>
+</html>
