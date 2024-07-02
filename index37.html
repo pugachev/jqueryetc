@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .wrap {
+        display:flex;
+        flex-flow: column;
+        height:300px;
+        margin:0 0 1em;
+    }
+    .content {
+        padding:1em;
+        margin:0.5em auto;
+        width:50%;
+    }
+  </style>
+</head>
+<body>
+    <main>
+        <div class="container">
+          <div class="wrap">
+              <div class="content">
+                  <div id="number-people-groups" style="display:flex;flex-flow: column;">
+                      <div class="number-people-group">
+                          <select id="number-people" name="number-people" style="width:200px;height: 30px;font-size:20px;margin-bottom:30px;">
+                            <option value="1">1人</option>
+                            <option value="2">2人</option>
+                            <option value="3">3人</option>
+                            <option value="4">4人</option>
+                            <option value="5">5人</option>
+                            <option value="6">6人</option>
+                            <option value="7">7人</option>
+                            <option value="8">8人</option>
+                            <option value="9">9人</option>
+                            <option value="10">10人</option>
+                          </select>
+                      </div>
+                  </div>
+                  <input type="button" value="人数追加" id="addSelect">
+                  <input type="button" value="人数削除" id="removeSelect">
+                  <input type="button" value="人数集計" id="countPeople">
+                  <p></p>
+              </div>
+          </div>
+        </div>
+      </main>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    let cnt=0;
+    // セレクトボックスをコピー
+    $("#addSelect").on('click',function(){
+        //現在のfemale-groupsの長さを取得する
+        let groupCnt = $("#number-people-groups  .number-people-group").length;
+        //ボタンの1個上ののfemale-groupをコピーする(中身は同じはず)
+        //クラスは同じものが複数あるので一番最後のやつをコピーする
+        let div =  $(this).prev().find('.number-people-group').eq(-1).clone(true);
+        //idとnameを書き換える
+        div.find('select[id*=number-people]').attr('id','number-people'+(Number(groupCnt)));
+        div.find('select[name*=number-people]').attr('name','number-people'+(Number(groupCnt)));
+        //新たに用意したdivをボタンの1個上のfemale-groupを追加する
+        //クラスは同じものが複数あるので一番最後のやつの後ろにコピーする
+        $(div).insertAfter($('.number-people-group').eq(-1));     
+    });
+
+    $("#removeSelect").on('click',function(){
+        let groupCnt = $("#number-people-groups  .number-people-group").length;
+        if(groupCnt>1){
+            // $(this).prev()だとaddSelectボタンを指すので人数selectboxが見つからない
+            // 自明の頂点であるid=number-people-groupsから一番最後のnumber-people-groupクラスを探す
+            let div = $('#number-people-groups').find('.number-people-group').eq(-1);
+            div.remove();
+        }
+    });
+
+    // セレクトボックスの人数を集計する
+    $('#countPeople').click(function(e){
+        $('select[name^=number-people]').each(function(e){
+            cnt += Number($(this).val());
+        });
+        $('p').text(cnt);
+    });
+    $(function() {
+      
+    });
+  </script>
+</body>
+</html>
