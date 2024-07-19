@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Position Absolute Example</title>
+  <style>
+    .container {
+      position: relative;
+      width: 300px;
+      height: 200px;
+      background-color: lightgrey;
+    }
+
+    .absolute {
+      position: absolute;
+      top: 20px;
+      left: 30px;
+      width: 100px;
+      height: 100px;
+      background-color: lightcoral;
+    }
+
+    .text {
+      background-color: lightblue;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="absolute">Absolute</div>
+    <p class="text">This is some text that will appear as if it is in the same space as the absolutely positioned element.</p>
+  </div>
+</body>
+</html>

@@ -52,14 +52,14 @@
     let cnt=0;
     // セレクトボックスをコピー
     $("#addSelect").on('click',function(){
-        //現在のfemale-groupsの長さを取得する
+        //現在のnumber-people-groups配下のfemale-groups(classなので複数有)の長さ(個数)を取得する
         let groupCnt = $("#number-people-groups  .number-people-group").length;
-        //ボタンの1個上ののfemale-groupをコピーする(中身は同じはず)
+        //ボタンの1個上のnumber-people-groupをコピーする(中身は同じはず)
         //クラスは同じものが複数あるので一番最後のやつをコピーする
         let div =  $(this).prev().find('.number-people-group').eq(-1).clone(true);
         //idとnameを書き換える
-        div.find('select[id*=number-people]').attr('id','number-people'+(Number(groupCnt)));
-        div.find('select[name*=number-people]').attr('name','number-people'+(Number(groupCnt)));
+        div.find('select[id^=number-people]').attr('id','number-people'+(Number(groupCnt)));
+        div.find('select[name^=number-people]').attr('name','number-people'+(Number(groupCnt)));
         //新たに用意したdivをボタンの1個上のfemale-groupを追加する
         //クラスは同じものが複数あるので一番最後のやつの後ろにコピーする
         $(div).insertAfter($('.number-people-group').eq(-1));     
@@ -77,6 +77,7 @@
 
     // セレクトボックスの人数を集計する
     $('#countPeople').click(function(e){
+        cnt = 0;
         $('select[name^=number-people]').each(function(e){
             cnt += Number($(this).val());
         });

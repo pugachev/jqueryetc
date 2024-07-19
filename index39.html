@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>FAQ</title>
+  <style>
+    <!--FAQの装飾だけ-->
+    h1 {
+      font-size: 18px;
+      border-bottom: 1px solid;
+      padding: 8px 16px;
+      margin-bottom: 16px;
+    }
+    <!--dlの周囲の余計なスペースを削除つまりリセット-->
+    dl {
+      margin: 0;
+    }
+    <!--dlの直下のdivを対象としてる他のdivは見当たらないけど-->
+    dl > div {
+      margin-bottom: 8px;
+    }
+    <!--用語の装飾_コピペ禁止だが効いてない_relativeを指定するとその対象だけ自由に配置できる-->
+    dt {
+      padding: 8px;
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+    }
+    <!--htmlの構造を変更せずに要素の前に別の要素を付けれる-->
+    dt::before {
+      content: 'Q. ';
+    }
+    <!--直上のdivタグを支点とする-->
+    dt::after {
+      content: '+';
+      position: absolute;
+      top: 8px;
+      right: 16px;
+      transition: transform .3s;
+    }
+    <!--dl直下のdivにappearクラスがるやつの下の全部のdtのafter要素にかかる-->
+    dl > div.appear dt::after {
+      transform: rotate(45deg);
+    }
+    <!--最初は非表示にする-->
+    dd {
+      padding: 8px;
+      margin: 0;
+      display: none;
+    }
+    <!--全てのdd要素前にA文字をつける-->
+    dd::before {
+      content: 'A .';
+    }
+    <!--dl直下のdiv（appearクラス付き）の下の全てのddに対応-->
+    dl > div.appear dd {
+      display: block;
+      animation: .3s fadeIn;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      100% {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    
+  </style>
+</head>
+<body>
+  <h1>FAQ</h1>
+  <dl>
+    <div>
+      <dt>質問です</dt>
+      <dd>回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。</dd>
+    </div>
+    <div>
+      <dt>質問です</dt>
+      <dd>回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。</dd>
+    </div>
+    <div>
+      <dt>質問です</dt>
+      <dd>回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。</dd>
+    </div>
+  </dl>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+    $(function() {
+      const dts = document.querySelectorAll('dt');
+
+      dts.forEach(dt => {
+        dt.addEventListener('click', () => {
+          dt.parentNode.classList.toggle('appear');
+
+          dts.forEach(el => {
+            if (dt !== el) {
+              el.parentNode.classList.remove('appear');
+            }
+          });
+        });
+      });
+    });
+</script>
+
+</body>
+</html>

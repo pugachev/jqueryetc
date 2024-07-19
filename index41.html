@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Position Absolute Example</title>
+  <style>
+    .relative {
+      position: relative;
+      top: 100px;
+      left: 200px;
+      width: 100px;
+      height: 100px;
+      background-color: lightblue;
+    }
+
+    .absolute {
+      /* position: absolute; */
+      position: relative;
+      top: 20px;
+      left: 30px;
+      background-color: lightcoral;
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div class="relative">
+    <div class="absolute">This is an absolutely positioned element.</div>
+  </div>
+  <div class="" style="width: 200px;background-color: red;">CSSを指定しない要素</div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>FAQ</title>
+  <style>
+    h1 {
+    font-size: 18px;
+    border-bottom: 1px solid;
+    padding: 8px 16px;
+    margin-bottom: 16px;
+    }
+
+    dl {
+    margin: 0;
+    }
+
+    dl > div {
+    margin-bottom: 8px;
+    }
+
+    dt {
+    padding: 8px;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    }
+
+    dt::before {
+    content: 'Q. ';
+    }
+
+    dt::after {
+    content: '+';
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    transition: transform .3s;
+    }
+
+    dl > div.appear dt::after {
+    transform: rotate(45deg);
+    }
+
+    dd {
+    padding: 8px;
+    margin: 0;
+    display: none;
+    }
+
+    dd::before {
+    content: 'A .';
+    }
+
+    dl > div.appear dd {
+    display: block;
+    animation: .3s fadeIn;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        100% {
+            opacity: 1;
+            transform: none;
+        }
+    }
+  </style>
+</head>
+<body>
+  <h1>FAQ</h1>
+  <dl>
+    <div>
+      <dt>質問です</dt>
+      <dd>回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。</dd>
+    </div>
+    <div>
+      <dt>質問です</dt>
+      <dd>回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。</dd>
+    </div>
+    <div>
+      <dt>質問です</dt>
+      <dd>回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。回答です。</dd>
+    </div>
+  </dl>
+<script>
+    const dts = document.querySelectorAll('dt');
+
+    dts.forEach(dt => {
+        dt.addEventListener('click', () => {
+            // .classList: 要素のクラス属性を操作するためのプロパティです
+            // .toggle('appear'): appear というクラス名が親要素のクラスリストに存在する場合は削除し、存在しない場合は追加します。
+            dt.parentNode.classList.toggle('appear');
+
+                dts.forEach(el => {
+                    if (dt !== el) {
+                        el.parentNode.classList.remove('appear');
+                    }
+                });
+        });
+    });
+</script>
+
+</body>
+</html>
